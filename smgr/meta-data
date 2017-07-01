@@ -1,0 +1,20 @@
+hostname: {{ hostname }}
+local-hostname: {{ hostname }}
+instance-id: {{ hostname }}
+network-interfaces: |
+  auto eth0
+  iface eth0 inet static
+  address {{ mgmt_ip }}
+  netmask {{ mgmt_netmask }}
+
+  auto eth1
+  iface eth1 inet static
+  address {{ ext_ip }}
+  netmask {{ ext_netmask }}
+  gateway {{ ext_gateway }}
+
+bootcmd:
+  - ifdown eth0
+  - ifup eth0
+  - ifdown eth1
+  - ifup eth1

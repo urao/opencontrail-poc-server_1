@@ -1,0 +1,44 @@
+{
+    "server": [
+        {
+            "base_image_id": "ubuntu-14-04-4",
+            "cluster_id": "pockitcluster",
+            "contrail": {
+                "control_data_interface": "{{ ctrldata_intf }}"
+            },
+            "domain": "{{ dns_search }}",
+            "host_name": "{{ server_name }}",
+            "id": "{{ server_name }}",
+            "ipmi_address": "{{ ipmi_address }}",
+            "ipmi_password": "{{ ipmi_password }}",
+            "ipmi_username": "{{ ipmi_username }}",
+            "network": {
+                "interfaces": [
+                    {
+                        "default_gateway": "{{ mgmt_gateway }}",
+                        "ip_address": "{{ mgmt_address }}",
+                        "mac_address": "{{ mgmt_mac }}",
+                        "name": "{{ mgmt_intf }}",
+                        "type": "physical"
+                    },
+                    {
+                        "default_gateway": "{{ ctrldata_gateway }}",
+                        "ip_address": "{{ ctrldata_address }}",
+                        "mac_address": "{{ ctrldata_mac }}",
+                        "name": "{{ ctrldata_intf }}",
+                        "type": "physical"
+                    }
+                ],
+                "management_interface": "{{ mgmt_intf }}",
+                "provisioning": "kickstart"
+            },
+            "parameters": {
+                "partition": "{{ disk_partition }}"
+            },
+            "password": "{{ root_password }}",
+            "roles": [
+                "{{ roles }}"
+            ]
+        }
+    ]
+}

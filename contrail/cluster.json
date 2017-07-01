@@ -1,0 +1,53 @@
+{
+    "cluster": [
+        {
+            "id": "pockitcluster",
+            "parameters": {
+                "domain": "{{ dns_search }}",
+                "gateway": "{{ cluster_gateway }}",
+                "provision": {
+                    "contrail": {
+                        "kernel_upgrade": true,
+                        "analytics": {
+                            "data_ttl": 168
+                        },
+                        "config": {
+                            "use_certs": false
+                        },
+                        "control": {
+                            "encapsulation_priority": "MPLSoUDP,MPLSoGRE,VXLAN",
+                            "external_bgp": "",
+                            "router_asn": {{ contrail_asn }}
+                        },
+                        "database": {
+                            "directory": "/var/lib/cassandra"
+                        }
+                    },
+                    "openstack": {
+                        "enable_ceilometer": false,
+                        "keystone": {
+                            "admin_password": "{{ openstack_password }}",
+                            "admin_tenant": "admin",
+                            "admin_user": "admin",
+                            "auth_port": 35357,
+                            "auth_protocol": "http",
+                            "service_tenant": "services"
+                        },
+                        "heat": {
+                            "encryption_key": "989C5C9E9F024A91"
+                        },             
+                        "multi_tenancy": true,
+                        "mysql": {
+                            "root_password": "{{ mysql_password }}"
+                        },
+                        "neutron": {
+                            "shared_secret": ""
+                        },
+                        "openstack_manage_amqp": false
+                    }
+                },
+                "subnet_mask": "{{ cluster_netmask }}"
+            }
+        }
+    ]
+}

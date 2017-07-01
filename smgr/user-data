@@ -1,0 +1,42 @@
+#cloud-config
+password: {{ password }}
+chpasswd: { expire: False }
+ssh_pwauth: True
+# upgrade packages on startup
+package_upgrade: false
+apt_upgrade: false
+manage_etc_hosts: true
+
+groups:
+  - {{ local_user }}
+  - users
+
+users:
+  - default
+  - name: {{ local_user }}
+    primary-group: {{ local_user }}
+    groups: users
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+    - {{ ssh_rsa_user }}
+    - {{ ssh_rsa_root }}
+
+chpasswd:
+  list: |
+    ubuntu:contrail123
+    {{ local_user }}:{{ local_password }}
+  expire: False
+
+manage-resolv-conf: true
+resolv_conf:
+  nameservers: ['{{ dns_server }}', '8.8.8.8']
+  searchdomains:
+    - {{ dns_search }}
+  domain: {{ dns_search }}
+runcmd:
+  - [ sh, -xc, "sed -i '/nameserver/d' /etc/resolv.conf" ]
+  - [ sh, -xc, "echo 'nameserver {{ dns_server }}' >> /etc/resolv.conf" ]
+  - [ sh, -xc, "echo 'nameserver 8.8.8.8' >> /etc/resolv.conf" ]
+  - [ sh, -xc, "echo 'nameserver {{ dns_server }}' >> /etc/resolvconf/resolv.conf.d/base" ]
+  - [ sh, -xc, "echo 'nameserver 8.8.8.8' >> /etc/resolvconf/resolv.conf.d/base" ]

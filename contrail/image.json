@@ -1,0 +1,22 @@
+{
+    "image": [
+        {
+            "category": "image",
+            "id": "ubuntu-14-04-4",
+            "parameters": {
+                "kickseed": "{{ kickseed_file }}",
+                "kickstart": "{{ kickstart_file }}"
+            },
+            "path": "{{ ubuntu_iso_file }}",
+            "type": "ubuntu",
+            "version": "ubuntu-14.04.4"
+        },
+        {
+            "category": "package",
+            "id": "mitaka",
+            "path": "{{ contrail_pkg_file }}",
+            "type": "contrail-ubuntu-package",
+            "version": "contrail-ubuntu-31145"
+        }
+    ]
+}
