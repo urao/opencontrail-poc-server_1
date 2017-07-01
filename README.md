@@ -22,7 +22,11 @@ Clone this repo
 
 Change directory, cd <repo-folder>
 
-Copy contrail and servermanager packages into artifacts folder
+Copy below packages into artifacts folder 
+[contrail-install-packages_3.2.2.0-33mitaka_all.deb
+contrail-server-manager-installer_3.2.2.0-33-ubuntu-14-04mitaka_all.deb
+ubuntu-14.04.4-server-amd64.iso
+ubuntu-14.04-server-cloudimg-amd64-disk1.img]
 
 Run setup_jumphost.sh [./setup_jumphost.sh]
 
