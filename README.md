@@ -20,7 +20,7 @@ With root user, execute the next steps
 
 Clone this repo  
 
-Change directory, cd <repo-folder>
+Change directory, cd opencontrail-poc-server_1
 
 Copy below packages into artifacts folder 
 [contrail-install-packages_3.2.2.0-33mitaka_all.deb
