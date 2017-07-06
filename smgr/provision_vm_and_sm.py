@@ -472,6 +472,7 @@ class createVMSM(object):
                 print "Do ssh tunnel command, ssh -f -N -L 9143:{}:9143 root@{}".format(sm_m_ip, sm_ext_ip)
                 print "Access to ServerManager web-ui from laptop to monitor provisioning \
                         and health of servers: https://127.0.0.1:9143/"
+                print "Credentials-- username: admin, password: contrail123"
 
     def progress_bar_print(self):
         global stop

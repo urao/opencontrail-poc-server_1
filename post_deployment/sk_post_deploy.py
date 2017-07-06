@@ -79,7 +79,7 @@ class postDeploy(object):
             print "All the services on contrail controller shows active. Installation successfully done."
             print res
             print "Access to Contrail web-ui: https://{0}:8143/".format(cc_ctrld_ip)
-            print "Access to Openstack Horizon web-ui: http://{1}/horizon".format(os_ctrld_ip)
+            print "Access to Openstack Horizon web-ui: http://{0}/horizon".format(os_ctrld_ip)
 
 if __name__ == '__main__':
 

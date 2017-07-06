@@ -35,7 +35,7 @@ deploy_contrail_function () {
         echo
         echo "**********************************************************"
         echo "Re-imaging and provisoning contrail successfully completed,
-proceed to deploy vMX on server2 by doing ./vmx_provision.sh"
+proceed to run post deployment script by doing ./post_deployment.sh"
         echo
         echo "**********************************************************"
         exit 0
