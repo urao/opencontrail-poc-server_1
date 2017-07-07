@@ -257,7 +257,7 @@ class reImageAndDeploy(object):
         cmd = 'server-manager delete image --image_id {}'.format(ubuntu_img_id)
         self.sm_vm.execute_cmd(cmd, timeout=120)
         cmd = 'server-manager add image -f {}/json-files/image.json'.format(self.sm_home)
-        self.sm_vm.execute_cmd(cmd, timeout=120)
+        self.sm_vm.execute_cmd(cmd, timeout=180)
         res = self.sm_api.image_get(ubuntu_img_id)
         if res != 200:
             print "\n"
@@ -300,6 +300,9 @@ class reImageAndDeploy(object):
             execute(cmd, ignore_errors=True)
             waiting(5)
             cmd = "virsh undefine %s" %CONF[vm]['hostname']
+            execute(cmd, ignore_errors=True)
+            waiting(5)
+            cmd = "virsh pool-refresh default"
             execute(cmd, ignore_errors=True)
             waiting(5)
             cmd = "virt-install --os-variant=ubuntutrusty --os-type=linux --arch=x86_64 --network mac=%s,bridge=mgmtbr --network mac=%s,bridge=ctrldatabr  --file=/var/lib/libvirt/images/%s.qcow2 --graphics vnc,password=%s --noautoconsole --vcpus=%s --ram=%s --pxe --name %s --autostart --file-size=%s" %(CONF[vm]['management_mac'], CONF[vm]['ctrldata_mac'], CONF[vm]['hostname'], CONF[vm]['local_password'], CONF[vm]['vcpus'], CONF[vm]['memory'], CONF[vm]['hostname'], CONF[vm]['harddisk'])

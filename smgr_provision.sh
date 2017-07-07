@@ -97,7 +97,7 @@ provision_sm_function () {
         echo
         echo "**************************************************************************"
         echo "VM creation and ServerManager deployment successfully completed, Proceed to
-re-image VM, BMS and provision contrail by doing ./contrail_provision.sh"
+re-image VMs and provision contrail by doing ./contrail_provision.sh"
         echo
         echo "**************************************************************************"
         exit 0

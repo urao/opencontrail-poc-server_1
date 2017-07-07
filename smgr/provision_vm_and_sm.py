@@ -469,9 +469,8 @@ class createVMSM(object):
                 print "contrail-server-manager service is running."
                 sm_ext_ip = get_ip(CONF['DEFAULTS']['sm_ext_address'])
                 print "Access to ServerManager web-ui from jumphost({}): https://{}:9143/".format(svr1,sm_m_ip)
-                print "Do ssh tunnel command, ssh -f -N -L 9143:{}:9143 root@{}".format(sm_m_ip, sm_ext_ip)
-                print "Access to ServerManager web-ui from laptop to monitor provisioning \
-                        and health of servers: https://127.0.0.1:9143/"
+                #print "Do ssh tunnel command, ssh -f -N -L 9143:{}:9143 root@{}".format(sm_m_ip, sm_ext_ip)
+                #print "Access to ServerManager web-ui from laptop to monitor provisioning and health of servers: https://127.0.0.1:9143/"
                 print "Credentials-- username: admin, password: contrail123"
 
     def progress_bar_print(self):

@@ -179,8 +179,13 @@ EOF
     pip install --no-cache-dir --ignore-installed -r $DIR/requirements.txt
     
     #copy of images existing in webserver folder
-    sudo cp -r $DIR/artifacts /var/www/html/pockit_images
-    
+    if [ -d "$DIR/artifacts" ]; then
+        if [ -d "/var/www/html/pockit_images" ]; then
+            rm -rf /var/www/html/pockit_images
+        fi
+        sudo cp -r $DIR/artifacts /var/www/html/pockit_images
+    fi
+
     echo 
     echo "**********************************************************************************"
     echo "Setup completed, next step to provision servermanager by doing ./smgr_provision.sh"
