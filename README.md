@@ -16,9 +16,13 @@ Configure TOR switch and External GW
 
 Install Ubuntu 14.04.4 base OS on Server 1
 
+Configure internet facing interface
+
 With root user, execute the next steps
 
-Clone this repo  
+Install git package, apt-get update && apt-get install -y git
+
+Clone this repo 
 
 Change directory, cd opencontrail-poc-server_1
 
